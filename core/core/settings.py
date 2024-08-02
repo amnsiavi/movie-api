@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'Users',
+    'APIKeys',
 ]
 AUTH_USER_MODEL = 'Users.UserModel'
 
@@ -52,6 +53,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES':(
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'APIKeys.api.authentication.ApiKeyAuthentication',
     )
 }
 SIMPLE_JWT = {
