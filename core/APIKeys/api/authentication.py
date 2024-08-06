@@ -9,18 +9,12 @@ class ApiKeyAuthentication(BaseAuthentication):
         
         #access_key = request.headers.get('X-Access-Key')
         #secret_key = request.headers.get('X-Secret-Key')
+        valid_access_key = 'X-Access-Key'
         access_key = None
-        if 'X-Access-Key' in request.headers:
-            access_key = request.headers.get('X-Access-Key')
         
-        if 'X-Secret-Key' in request.headers:
-            access_key = request.headers.get('X-Access-Key')
+        if valid_access_key in request.headers:
+            access_key = request.headers.get(valid_access_key)
         
-        if 'X-Access-Key' in request.headers and 'X-Secret-Key' in request.headers:
-            access_key = request.headers.get('X-Access-Key')
-        
-        if not 'X-Access-Key' in request.headers or not 'X-Secret-Key' in request.headers:
-            raise AuthenticationFailed('Authentication failed. X-Access-Key and X-Secret-Key headers are required.')
         
         if not access_key == None:
 
@@ -31,5 +25,5 @@ class ApiKeyAuthentication(BaseAuthentication):
             
             return (key.user,None)
         
-        raise AuthenticationFailed('Authentication failed. X-Access-Key and X-Secret-Key headers are required.')
+        raise AuthenticationFailed('Authentication failed. X-Access-Key are required.')
 

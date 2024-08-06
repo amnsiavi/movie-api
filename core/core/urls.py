@@ -26,6 +26,9 @@ urlpatterns = [
 
     #URL Patterns For ApiKeys App
     path('apikeys/',include('APIKeys.api.urls')),
+    
+    #URL patterns for Movies App
+    path('movies/',include('Movies.api.urls')),
 
     path('api/token', TokenObtainPairView.as_view(),name='token_obtain'),
     path('api/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
